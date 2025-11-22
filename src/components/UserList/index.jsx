@@ -6,18 +6,19 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import { Link } from "react-router-dom";   
-import "./styles.css";
-import models from "../../modelData/models";
+import { Link } from "react-router-dom";
+import fetchModel from "../../lib/fetchModelData";
 
 function UserList() {
-  const users = models.userListModel();
+  const [users, setUsers] = React.useState([]);
+
+  React.useEffect(() => {
+    fetchModel("/api/user/list").then((data) => setUsers(data));
+  }, []);
 
   return (
     <div>
-      <Typography variant="body1" gutterBottom>
-        Danh sách người dùng:
-      </Typography>
+      <Typography variant="h6">Danh sách người dùng</Typography>
 
       <List component="nav">
         {users.map((user) => (
@@ -36,10 +37,6 @@ function UserList() {
           </React.Fragment>
         ))}
       </List>
-
-      <Typography variant="caption">
-        (Dữ liệu lấy từ models.userListModel())
-      </Typography>
     </div>
   );
 }

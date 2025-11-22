@@ -5,6 +5,7 @@
   max-height: 100%; /* Giới hạn chiều cao để kích hoạt cuộn */
   height: calc(100vh - 85px);
   overflow-y: auto; /* Cho phép cuộn theo chiều dọc khi nội dung vượt quá */
+  padding: 0px !important;
 }
 
 /* === Ảnh của người dùng === */
